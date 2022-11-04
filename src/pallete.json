@@ -1,0 +1,73 @@
+ {
+     "stella": {
+
+  "unknown": {
+    "lavender": "#7A83A0",
+    "magenta": "#C72B64",
+    "kelly": "#2F6E4B",
+    "royal": "#323065",
+    "pink": "#DA8EA4",
+    "umber": "#1B1519",
+    "soil": "#3B2A27",
+    "tomato": "#C83831",
+    "gray": "#A4A0A3",
+    "sky": "#659BD4",
+    "orange": "#D2753E",
+    "yellow": "#FDE269",
+    "slate": "#5D5259",
+    "flesh": "#D67E66"
+  },
+
+  "harran_ii": {
+    "mango": "#FCA329",
+    "periwinkle": "#AABEDB",
+    "pink": "#FC6D86",
+    "shrimp": "#FB425B",
+    "jersey": "#1073BC",
+    "lust": "#FA1543",
+    "nauseous": "#D7CD7A",
+    "kelly": "#1CBD67",
+    "cream": "#F9E6C5",
+    "wool": "#A49B94",
+    "shale": "#83726D",
+    "barney": "#DA3B6E",
+    "prep": "#F6D556",
+    "startup": "#1AA4D1",
+    "airline": "#0B6188",
+    "atlantic": "#1990A3",
+    "cutie": "#FC8124",
+    "taupe": "#CAAE94",
+    "suede": "#C0915D",
+    "patagonia": "#1CB190",
+    "strawberry": "#1CB190",
+    "deep": "#03146F",
+    "sage": "#ABBB86",
+    "carrot": "#ED561D",
+    "julius": "#FB9E27",
+    "shorthair": "#10041F",
+    "james": "#9B9E89",
+    "sienna": "#CC822D"
+  },
+
+  "firuzabad": {
+    "barbie": "#FA3364",
+    "king": "#410440",
+    "hotstepper": "#FA3C2D",
+    "flight_attendant": "#63AAF9",
+    "public_servant": "#315879",
+    "first_lady": "#0C3DCF",
+    "spy": "#020D09",
+    "maestro": "#1D160A",
+    "violist": "#E20B1C",
+    "nurse": "#8ED9C4",
+    "it": "#6E92AB"
+  },
+
+  "empress_of_india_ii": {
+    "apathy": "#9BA1A1",
+    "sensuality": "#CE5086",
+    "intimacy": "#E47223",
+    "poignancy": "#16959A"
+  }
+}
+ }

@@ -11,3 +11,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app {
+  display: flex;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+.collapse {
+  width: 10px;
+  height: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-weight: bolder;
+}
+
+.content {
+  width: 75%;
+  padding-right: 30px;
+  padding-left: 15px;
+}
+
+.navbar {
+  padding: 0px 24px 0px 0px;
+  margin-right: 12px;
+  width: 25%;
+  text-align: right;
+  font-family: monospace;
+  font-weight: bolder;
+  overflow: hidden;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+}
+.navbar li {
+  padding: 4px 12px;
+  width: 100%;
+}
+.navbar a {
+  text-decoration: none;
+  padding: 0px 10px;
+  color: inherit;
+}
+
+.navbar a:hover {
+  letter-spacing: 3.5px;
+  padding-right: 8px;
+  /* font-weight: bold; */
+}
+.navbar a:active {
+  letter-spacing: 3.5px;
+  /* font-weight: bold; */
+}
+.navbar span {
+  letter-spacing: initial;
+}
+
+
