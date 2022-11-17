@@ -7,6 +7,8 @@ export default function Rumi() {
         <div>
             <h2>Rumi Randomizer</h2>
             <NewlineText text={quote}/>
+            <p>&nbsp;</p>
+            <p>جلال‌الدین محمد رومی / Jalāl al-Dīn Muḥammad Rūmī</p>
         </div>
     )
 }

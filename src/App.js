@@ -1,96 +1,25 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Link,
   Routes,
   Route,
   useLocation,
-  withRouter
 } from "react-router-dom";
 import Rumi from './Rumi';
+import Home from './Home';
 import colors from './pallete.json';
+import routes from './routes';
+//import morgan from '../public/morgan'
 import { keys, random, range, size, values, extend } from 'lodash';
 
 function getColorStyle(i, background) {
   const currPainting = keys(colors.stella)[1] // "harran_ii"
   const c = values(colors.stella[currPainting])
-  const index = i >= 0 ? i % c.length - 1 : random(c.length - 1)
-  // if (background) {
-  //   return {
-  //     backgroundColor: c[index]
-  //   }
-  // }
+  const index = i >= 0 ? i % (c.length - 1) : random(c.length - 1)
   return {
-    color: c[index],
-    //color: "white"
+    color: c[index]
   }
 }
-
-const routes = {
-  home: {
-    link: "/",
-    nav: "home",
-    element: <Home />
-  },
-  about: {
-    link: "/about",
-    nav: "about",
-    element: <About />
-  },
-  users: {
-    link: "/users",
-    nav: "users",
-    element: <Users />
-  },
-  rumi: {
-    link: "/rumi",
-    nav: "rumi",
-    element: <Rumi />
-  },
-  rumi_f: {
-    link: "/art",
-    nav: "artworks",
-    element: <Rumi />
-  },
-  rumi_e: {
-    link: "/writing",
-    nav: "writing",
-    element: <Rumi />
-  },
-  rumi_d: {
-    link: "/teaching",
-    nav: "teaching",
-    element: <Rumi />
-  },
-  rumi_a: {
-    link: "/gallery",
-    nav: "gallery",
-    element: <Rumi />
-  },
-  rumi_b: {
-    link: "/travel",
-    nav: "travel",
-    element: <Rumi />
-  },
-  rumi_c: {
-    link: "/ramblings",
-    nav: "ramblings",
-    element: <Rumi />
-  },
-  rumi_1: {
-    link: "/map",
-    nav: "morgan map",
-    element: <Rumi />
-  },
-  rumi_2: {
-    link: "/morganic-produce",
-    nav: "plantings",
-    element: <Rumi />
-  },
-}
-
-const screenHeight = window.screen.availHeight;
-const remainingHeight = screenHeight - (28 * size(routes))
 
 export default function App() {
   const buttonText = '<<'
@@ -115,11 +44,6 @@ export default function App() {
             )
           })}
         </ul>
-        {/* <ul>
-          {range(0,remainingHeight/8).map(i => (
-            <li key={i} style={getColorStyle(i)}> </li>
-          ))}
-        </ul> */}
       </nav>
 
       <div className="content">
@@ -134,15 +58,12 @@ export default function App() {
   );
 }
 
-function Home() {
-    return <h2>Home</h2>;
-  }
-  
+function Users() {
+  return <h2>Users</h2>;
+}
+
 function About() {
   return <h2>About</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
-}
 

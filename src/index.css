@@ -15,7 +15,7 @@ code {
 .app {
   display: flex;
   font-family: monospace;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .collapse {
@@ -32,10 +32,15 @@ code {
   padding-right: 30px;
   padding-left: 15px;
 }
+.content p {
+  line-height: 1.2em;
+}
 
 .navbar {
   padding: 0px 24px 0px 0px;
   margin-right: 12px;
+  margin-top: 36px;
+  font-size: 20px;
   width: 25%;
   text-align: right;
   font-family: monospace;
