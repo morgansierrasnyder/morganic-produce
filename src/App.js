@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import Rumi from './Rumi';
 import Home from './Home';
+import Art from './Art';
 import colors from './pallete.json';
 import routes from './routes';
-//import morgan from '../public/morgan'
 import { keys, random, range, size, values, extend } from 'lodash';
 
 function getColorStyle(i, background) {
@@ -52,6 +52,7 @@ export default function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/users" element={<Users/>} />
           <Route path="/rumi" element={<Rumi/>} />
+          <Route path="/art" element={<Art/>} />
         </Routes>
       </div>
     </div>

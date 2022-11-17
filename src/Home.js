@@ -1,6 +1,5 @@
 import React from 'react';
 
-const highlightStyle = { backgroundColor: 'lightyellow'}
 export default function Home() {
     return (
         <React.Fragment>
