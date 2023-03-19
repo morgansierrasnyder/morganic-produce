@@ -1,3 +1,7 @@
+.crossout {
+  text-decoration:line-through;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -73,6 +77,15 @@ code {
 }
 .navbar span {
   letter-spacing: initial;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery img {
+  padding-bottom: 12px;
 }
 
 

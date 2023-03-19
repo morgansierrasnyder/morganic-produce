@@ -1,4 +1,6 @@
 import React from 'react'
+import { map } from 'lodash'
+
 import morgan from './images/morgan.png'
 import hands from './images/hands.png'
 // covid / 2020
@@ -38,8 +40,8 @@ import jtmf2 from './images/jtmf2.jpeg'
 
 
 
-const images = [
-    morgan,
+const images = {
+    // morgan,
     hands,
     jtree,
     carson,
@@ -70,14 +72,14 @@ const images = [
     maze,
     jtmf,
     jtmf2
-]
+}
 
-export default function App() {
+export default function Art() {
     return (
-        <React.Fragment>
-            {images.map(pic => (
-                <img key={toString(pic)} width="500" src={pic} />
-            ))}
-        </React.Fragment>
+        <div className='gallery'>
+            {map(images, ((pic,alt) => (
+                <img alt={alt} key={alt} width="500" src={pic} />
+            )))}
+        </div>
     )
 }

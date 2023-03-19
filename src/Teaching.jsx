@@ -1,49 +1,60 @@
 import React, { useState } from 'react'
+import './index.css'
 
 /*
- * Mock Weather API functions
+ * EXAMPLE: async / await
+ * Fetch Weather API data for San Mateo
  */
-function fetchWeatherData() {
-    return {
-        temp: 80,
-        humidity: 70,
-        //aqi: 85,
-        hourly: "N/A"
-    }
-}
-
-function getUserLocation() {
-  return "94303"
-}
-
-function getAqiFromZip(zip) {
-  return Math.floor(Math.random() * 50) + 50
+async function fetchWeatherData() {
+    const data = await fetch("https://api.weather.gov/gridpoints/MTR/86,95/forecast")
+    return data.json()
 }
 
 /*
- * WeatherDashboard Functional Component
- * takes no props
- * "parent" component of Thermometer, AQI, etc
+ * EXAMPLE: React Class Component
+ * WeatherDashboard takes no props, stores `temp` and `todos` in state
+ * "parent" component of Thermometer, Humility, ToDoList
  */ 
 export default class WeatherDashboard extends React.Component {
     constructor(props) {
         super(props)
-        const data = fetchWeatherData()
         this.state = {
-            frequency: 60,
-            temp: data.temp
+            temp: undefined,
+            todos: ['too', 'much', 'work']
         }
     }
+
+    // the componentDidMount function gets run once, the first
+    // time this component is rendered
+    componentDidMount() {
+        this.updateWeatherData()
+        setInterval(this.updateWeatherData, 100000)
+    }
+
+    updateWeatherData = () => {
+        // EXAMPLE: Promises!
+        // calling fetchWeatherData() returns a promise
+        // use ".then(callback)" to specify what we want to 
+        // do with the data when it is returned from the API
+        fetchWeatherData().then(data => {
+            const todayForecast = data.properties.periods[0]
+            console.log(todayForecast.temperature)
+            this.setState({
+                temp: todayForecast.temperature
+            })
+        })
+    }
+
     // event handler function, passed as props
     // to the Temperature component
     updateTemperature = (newTemp) => {
-        console.log(`new temp =${newTemp}`)
+        // console.log(`new temp =${newTemp}`)
         this.setState({
-            // frequency: this.state.frequency,
             temp: newTemp
         })
     }
-    // another "noop" event handler function
+
+    // a "noop" event handler function
     fakeUpdateTemperature(e) {
         return // do nothing
     }
@@ -51,30 +62,71 @@ export default class WeatherDashboard extends React.Component {
     render() {
         const { temp } = this.state
         const humidity = 95
-        const hourly = 2
+        const hourly = 2    
+
         return (
             <div>
-                {/* composing multiple instaces of the same Temperature component */}
+                {/* EXAMPLE: composing multiple instaces of the same Temperature component */}
                 <Thermometer temp={temp} onSubmit={this.updateTemperature} color={"yellow"} age={42}/> 
                 <Thermometer temp={temp} onSubmit={this.updateTemperature}/>
                 <Thermometer temp={temp} onSubmit={this.fakeUpdateTemperature}/>
                 <Humidity humidity={humidity} />
                 <HourlyForecast hourly={hourly}/>
+                {/* EXAMPLE: using array.map to create multiple components from an array */}
+                {this.state.todos.map((todo, i) => <ToDo item={todo} key={todo + i} />)}
             </div>
         )
     }
 }
 
 /*
- * Thermometer Functional Component
+ * EXAMPLE: modifying css styles on user events in React
+ * ToDo component - displays a "todo" item with a check button
+ * crosses out text when button is pressed
+ */ 
+class ToDo extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            className: ""
+        }
+    }
+
+    crossOutTodo= () => {
+        if (this.state.className) {
+            this.setState({
+                className: ""
+            })
+        } else {
+            this.setState({
+                className: "crossout"
+            })
+        }
+    }
+
+    render() {
+        const { item } = this.props
+        return (
+            <div>
+                <button onClick={this.crossOutTodo} ></button>
+                <span className={this.state.className}>{item}</span>
+            </div>
+        )
+    }
+}
+
+/*
+ * EXAMPLE: React Functional Component with `useState`
  * (i.e. a React Component represented as a function)
  * takes props `temp` and `onSubmit` as parameters
  */ 
 function Thermometer({ temp, onSubmit }) {
-    const [inputValue, updateInputValue] = useState(null)
+    const [inputValue, updateInputValue] = useState(undefined)
+    
     function inputUpdate(evt) {
         updateInputValue(evt.target.value)
     }
+    
     return (
         <React.Fragment>
             <div>Temp is {temp > 100 ? "uh oh" : temp}</div>
@@ -90,37 +142,4 @@ function HourlyForecast() {
 
 function Humidity() {
     return <div>TODO</div>
-}
-
-/*
- * AQI Functional Component
- * receives `updateFrequency` as props
- * maintains `aqi` as part of its state
- */
-function AQI({ updateFrequency }) {
-    /* 
-     * useState() gets a value and its update function from component state (memory)
-     * remember: "getter" and "setter"!
-     *
-     * from tictactoe:
-     * const [squares, setSquares] = useState(Array(9))
-     */
-
-    // const [aqi, setAqi] = useState(95)
-    // console.log(aqi) // 95
-    // setAqi(100)
-    // console.log(aqi) // 100
-    // //get user zipcode
-    // const zipcode = getUserLocation()
-    // // get aqi based on zipcode
-    // const localAqi = getAqiFromZip(zipcode)
-    // if (localAqi != undefined) {
-    //     setAqi(localAqi)
-    // } else {
-    //     setAqi(95)
-    // }
-
-    return (
-        <div>AQI is 95</div>
-    )
 }
